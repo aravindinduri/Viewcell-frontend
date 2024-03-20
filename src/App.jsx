@@ -1,11 +1,8 @@
-import { useState } from 'react'
-// import Register from '../src/components/register.jsx'
-import Home from './components/Home.jsx'
+import LandingPage from './components/pages/LandingPage/LandingPage.jsx'
 function App() {
-
   return (
     <>
-   <Home/>
+   <LandingPage/>
     </>
   )
 }
