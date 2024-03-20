@@ -20,7 +20,7 @@ const Home = () => {
   return (
 
     <div className="flex flex-col">
-      <div>
+      {/* <div>
         <nav className="flex flex-row justify-between bg-[#000]">
           <section>
             <ul className="flex space-x-4 p-4">
@@ -28,7 +28,7 @@ const Home = () => {
               <li className="cursor-pointer text-3xl pl-4"><Logo /></li>
             </ul>
           </section>
-          {/* side bar */}
+          {/* side bar 
           <div className={clsx("sm:grid auto-rows-auto fixed -translate-x-full md:hidden p-4 bg-blue-500/50 z-10 w-screen h-lvh drop-shadow-lg transition-all", isSideBarOpen && "translate-x-0")}>
             <MdClose onClick={() => setOpen(false)} className="text-4xl text-white mb-4 cursor-pointer" />
             <div className="flex flex-col gap-9 text-white">
@@ -48,7 +48,7 @@ const Home = () => {
             </ul>
           </section>
         </nav>
-      </div>
+      </div> */}
       {/* Body */}
       <div className="flex flex-col overflow-hidden">
         <Parallax bgImage="https://i.postimg.cc/P5YgPs11/neon-22534-960-720.jpg" strength={900} className="flex justify-center items-center w-auto h-lvh bg-cover" >
