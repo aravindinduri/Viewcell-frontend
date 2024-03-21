@@ -1,13 +1,15 @@
 
 import React, { useState } from 'react';
 import axios from 'axios'
-
+import { BrowserRouter as Navigator, useNavigate } from 'react-router-dom';
 const LoginForm = () => {
- const initialDetails = {
+  const initialDetails = {
     email: '',
     password: ''
   }
   const [details, setDetails] = useState(initialDetails)
+  const [isLogin , setisLogin] = useState(false)
+  const navigate = useNavigate();
   const handleLogin = async () => {
     try {
 
@@ -17,12 +19,13 @@ const LoginForm = () => {
       })
       if (response.status === 200) {
         console.log("user logged in Succesfully")
-        setDetails(initialDetails);
+        setDetails(initialDetails)
+        setisLogin(true)
+        {isLogin && navigate('/home') }
       }
     }
-    catch(error)
-    {
-      console.log("Erroe Occured while login",error)
+    catch (error) {
+      console.log("Erroe Occured while login", error)
     }
   }
 
