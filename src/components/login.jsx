@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import axios from 'axios'
-import { BrowserRouter as Navigator, useNavigate } from 'react-router-dom';
+import { BrowserRouter as useNavigate } from 'react-router-dom';
 const LoginForm = () => {
   const initialDetails = {
     email: '',
