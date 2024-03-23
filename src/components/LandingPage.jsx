@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import clsx from 'clsx'
-import Logo from '../Logo/logo.jsx';
+import Logo from '../images/logo.jsx';
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 import { AiOutlineMenu } from "react-icons/ai";
 import { MdClose } from "react-icons/md";
 import { Parallax } from 'react-parallax';
-import LoginForm from "./login.jsx";
+import LoginForm from "../components/login.jsx";
 import RegisterForm from "./register.jsx";
 const LandingPage = () => {
   const [Toggle, setToggle] = useState(false)
