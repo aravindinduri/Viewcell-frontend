@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import axios from 'axios'
-import { BrowserRouter as useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 const LoginForm = () => {
   const initialDetails = {
     email: '',
@@ -21,7 +21,7 @@ const LoginForm = () => {
         console.log("user logged in Succesfully")
         setDetails(initialDetails)
         setisLogin(true)
-        {isLogin && navigate('/home') }
+        navigate('/home')
       }
     }
     catch (error) {
