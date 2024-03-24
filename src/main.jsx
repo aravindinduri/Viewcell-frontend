@@ -4,8 +4,8 @@ import App from './App.jsx'
 
 import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import LandingPage from './components/LandingPage.jsx'
-import Home from './components/Home.jsx'
+import LandingPage from './components/pages/LandingPage/LandingPage.jsx'
+import Home from './components/pages/HomePage/Home.jsx'
 
 const router = createBrowserRouter([
   {
