@@ -6,7 +6,7 @@ export default function Logo() {
   {/* <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
  "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd"> */}
-<svg version="1.0" xmlns="http://www.w3.org/2000/svg" className="-m-10 ml-2 absolute"
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg" className="sm:-m-10 ml-2 absolute"
  width="150" height="100" viewBox="0 0 300 169"
  preserveAspectRatio="xMidYMid meet">
 <metadata>
