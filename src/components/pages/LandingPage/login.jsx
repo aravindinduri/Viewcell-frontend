@@ -1,14 +1,14 @@
 
 import React, { useState } from 'react';
 import axios from 'axios'
-import {  useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 const LoginForm = () => {
   const initialDetails = {
     email: '',
     password: ''
   }
   const [details, setDetails] = useState(initialDetails)
-  const [isLogin , setisLogin] = useState(false)
+  const [isLogin, setisLogin] = useState(false)
   const navigate = useNavigate();
   const handleLogin = async () => {
     try {
