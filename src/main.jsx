@@ -2,9 +2,12 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+// Importing Components
 import LandingPage from './components/pages/LandingPage/LandingPage.jsx'
 import Home from './components/pages/HomePage/Home.jsx'
-
+import UserHome from './components/pages/HomePage/UserHome.jsx'
+import LikedVideos from './components/pages/HomePage/LikedVideos.jsx'
+import WatchHistory from './components/pages/HomePage/WatchHistory.jsx'
 const router = createBrowserRouter([
   {
     path: '',
@@ -16,15 +19,15 @@ const router = createBrowserRouter([
     children: [
       {
        path :'/home',
-       element : <>Home</>
+       element :<UserHome/>
       },
       {
         path : '/home/likedVideos',
-        element : <>liked</>
+        element : <LikedVideos/>
       },
       {
         path : '/home/history/',
-        element : <>History</>
+        element : <WatchHistory/>
       },
       {
         path : '/home/myVideos/',
