@@ -1,30 +1,24 @@
 import React, { useEffect, useState } from 'react'
-import { AiOutlineMenu } from "react-icons/ai";
 import { PiMagnifyingGlassBold } from "react-icons/pi";
-
 import Logo from '../../../images/logo.jsx';
-import clsx from 'clsx';
-import axios from 'axios';
 
 function NavBar() {
-    const [data, setData] = useState(null);
+    // const [data, setData] = useState(null);
 
-    useEffect(() => {
-        const fetchdata = async () => {
-            const responce = await axios.get('/api/v1/users/current-user')
-            setData(responce.data)
-            console.log(responce.data.data.avatar)
-        }
-        data ? null: fetchdata()
-    },[])
-    const [isSideBarOpen, setOpen] = useState(false)
+    // useEffect(() => {
+    //     const fetchdata = async () => {
+    //         const responce = await axios.get('/api/v1/users/current-user')
+    //         setData(responce.data)
+    //         console.log(responce.data.data.avatar)
+    //     }
+    //     data ? null: fetchdata()
+    // },[])
     return (
         <div>
             <nav className="flex flex-row justify-between bg-[#000] font-size sm:w-auto h-20">
                 <section>
                     <ul className="flex space-x-4 p-4">
-                        <AiOutlineMenu onClick={() => setOpen(true)} className={clsx("text-2xl text-white cursor-pointer sm:hidden transition-all", isSideBarOpen && "invisible")} />
-                        <li className="cursor-pointer text-3xl pl-4"><Logo /></li>
+                        <li className="cursor-pointer text-sm sm:text-3xl pl-10"><Logo /></li>
                     </ul>
                 </section>
                 <section className="flex flex-direction:col">
@@ -41,9 +35,7 @@ function NavBar() {
                             </div>
 
                         </li>
-                        <li className='flex items-center'>
-                            <img className=' self-center w-10 rounded-full' src= {data ? data.data.avatar : ''} alt="img" />
-                        </li>
+
                     </ul>
                 </section>
             </nav>
