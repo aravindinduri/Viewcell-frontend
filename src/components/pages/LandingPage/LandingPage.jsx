@@ -47,6 +47,7 @@ const LandingPage = () => {
             </ul>
           </section>
         </nav>
+        
       </div>
       {/* Body */}
       <div className="flex flex-col overflow-hidden">

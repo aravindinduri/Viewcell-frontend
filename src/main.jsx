@@ -5,7 +5,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 // Importing Components
 import LandingPage from './components/pages/LandingPage/LandingPage.jsx'
 import Home from './components/pages/HomePage/Home.jsx'
-import UserHome from './components/pages/HomePage/UserHome.jsx'
+import Dashboard from './components/pages/HomePage/Dashboard.jsx'
 import LikedVideos from './components/pages/HomePage/LikedVideos.jsx'
 import WatchHistory from './components/pages/HomePage/WatchHistory.jsx'
 const router = createBrowserRouter([
@@ -19,7 +19,7 @@ const router = createBrowserRouter([
     children: [
       {
        path :'/home',
-       element :<UserHome/>
+       element :<Dashboard/>
       },
       {
         path : '/home/likedVideos',

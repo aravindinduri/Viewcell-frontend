@@ -1,39 +1,17 @@
 import React from 'react'
+import Sidebar from './Sidebar';
 import {  useNavigate } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
-import { IoMdHome } from "react-icons/io";
-import { BiSolidLike } from "react-icons/bi";
-import { LuHistory } from "react-icons/lu";
-import { PiVideoFill } from "react-icons/pi";
-import { BsCollectionFill } from "react-icons/bs";
-import { GiPlayButton } from "react-icons/gi";
-
-
 
 function Body() {
     const navigate = useNavigate()
     return (
         <>
-            <div className='flex flex-row bg-slate-900 text-white h-lvh'>
-                <section className='w-1/5 
-                             border-r-4 border-indigo-200 border-r-indigo-900'>
-                    <ul className='flex flex-col p-4 h-lvh gap-4'>
-                        <li
-                            className='flex flex-row cursor-pointer gap-2 sm:text-2xl items-center text-center border-b border-indigo-500/50  hover:bg-sky-700/50' onClick={() => { navigate('') }}><IoMdHome /> Home</li>
-                        <li
-                            className='flex flex-row cursor-pointer gap-2 sm:text-2xl items-center text-center border-b border-indigo-500/50  hover:bg-sky-700/50' onClick={() => { navigate('/home/likedVideos') }} ><BiSolidLike /> Liked Videos</li>
-                        <li
-                            className='flex flex-row cursor-pointer gap-2 sm:text-2xl items-center text-center border-b border-indigo-500/50  hover:bg-sky-700/50' onClick={(e) => { navigate('/home/history') }}><LuHistory /> History</li>
-                        <li
-                            className='flex flex-row cursor-pointer gap-2 sm:text-2xl items-center text-center border-b border-indigo-500/50  hover:bg-sky-700/50' onClick={(e) => { navigate('/home/myVideos') }}><PiVideoFill /> My Videos</li>
-                        <li
-                            className='flex flex-row cursor-pointer gap-2 sm:text-2xl items-center text-center border-b border-indigo-500/50  hover:bg-sky-700/50' onClick={(e) => { navigate('/home/myCollections') }}><BsCollectionFill /> My Collections</li>
-                        <li
-                            className='flex flex-row cursor-pointer gap-2 sm:text-2xl items-center text-center border-b border-indigo-500/50  hover:bg-sky-700/50' onClick={(e) => { navigate('/home/subcribers') }}><GiPlayButton /> Subcribers</li>
-
-                    </ul>
+            <div className='flex flex-row text-white h-lvh bg-blue-gray-500'>
+                <section>
+                <Sidebar/>
                 </section>
-                <section className='flex'>
+                <section className='flex '>
                     <Outlet />
                 </section>
             </div>
@@ -43,5 +21,75 @@ function Body() {
 
 export default Body
 
+// import {
+//     Card,
+//     Typography,
+//     List,
+//     ListItem,
+//     ListItemPrefix,
+//     ListItemSuffix,
+//     Chip,
+//   } from "@material-tailwind/react";
+//   import {
+//     PresentationChartBarIcon,
+//     ShoppingBagIcon,
+//     UserCircleIcon,
+//     Cog6ToothIcon,
+//     InboxIcon,
+//     PowerIcon,
+//   } from "@heroicons/react/24/solid";
+   
+//   export default function Body() {
+//     return (
+//       <Card className="h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
+//         <div className="mb-2 p-4">
+//           <Typography variant="h5" color="blue-gray">
+//             Sidebar
+//           </Typography>
+//         </div>
+//         <List>
+//           <ListItem>
+//             <ListItemPrefix>
+//               <PresentationChartBarIcon className="h-5 w-5" />
+//             </ListItemPrefix>
+//             Dashboard
+//           </ListItem>
+//           <ListItem>
+//             <ListItemPrefix>
+//               <ShoppingBagIcon className="h-5 w-5" />
+//             </ListItemPrefix>
+//             E-Commerce
+//           </ListItem>
+//           <ListItem>
+//             <ListItemPrefix>
+//               <InboxIcon className="h-5 w-5" />
+//             </ListItemPrefix>
+//             Inbox
+//             <ListItemSuffix>
+//               <Chip value="14" size="sm" variant="ghost" color="blue-gray" className="rounded-full" />
+//             </ListItemSuffix>
+//           </ListItem>
+//           <ListItem>
+//             <ListItemPrefix>
+//               <UserCircleIcon className="h-5 w-5" />
+//             </ListItemPrefix>
+//             Profile
+//           </ListItem>
+//           <ListItem>
+//             <ListItemPrefix>
+//               <Cog6ToothIcon className="h-5 w-5" />
+//             </ListItemPrefix>
+//             Settings
+//           </ListItem>
+//           <ListItem>
+//             <ListItemPrefix>
+//               <PowerIcon className="h-5 w-5" />
+//             </ListItemPrefix>
+//             Log Out
+//           </ListItem>
+//         </List>
+//       </Card>
+//     );
+//   }
 
 
