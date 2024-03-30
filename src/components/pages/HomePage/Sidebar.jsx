@@ -8,6 +8,7 @@ import {
   ListItem,
   ListItemPrefix,
   Drawer,
+  Avatar,
   Card,
 } from "@material-tailwind/react";
 import {
@@ -30,9 +31,9 @@ export default function Sidebar() {
 
   return (
     <>
-      <div className=" text-white h-full">
+      <div className="hidden sm:block text-white h-full">
         <List className="bg-[#000] flex flex-col gap-7 text-white h-full">
-          <Link to= '/home/'>
+          <Link to='/home/'>
             <ListItem>
               <ListItemPrefix>
                 <PresentationChartBarIcon className="h-5 w-5" />
@@ -41,7 +42,7 @@ export default function Sidebar() {
             </ListItem>
           </Link>
 
-          <Link to= '/home/likedVideos'>
+          <Link to='/home/likedVideos'>
             <ListItem>
               <ListItemPrefix>
                 <FcLike />
@@ -52,8 +53,12 @@ export default function Sidebar() {
 
           <ListItem>
             <ListItemPrefix>
-              <UserCircleIcon className="h-5 w-5" />
-            </ListItemPrefix>
+              <Avatar
+                variant="circular"
+                alt="user"
+                className="border-1 border-white w-8 h-8 hover:z-10 focus:z-10"
+                src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1061&q=80"
+              />            </ListItemPrefix>
             Profile
           </ListItem>
 
@@ -72,7 +77,7 @@ export default function Sidebar() {
           </ListItem>
         </List>
       </div>
-      <div className="visible sm:invisible ">
+      <div className="block sm:hidden ">
         <IconButton variant="text" size="lg" onClick={openDrawer}>
           {isDrawerOpen ? (
             <XMarkIcon className="h-8 w-8 stroke-2" />

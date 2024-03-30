@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import clsx from 'clsx'
 import Logo from '../../../images/logo.jsx';
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { Switch } from "@material-tailwind/react";
 import { SiGmail } from "react-icons/si";
 import { AiOutlineMenu } from "react-icons/ai";
 import { MdClose } from "react-icons/md";
@@ -47,7 +48,7 @@ const LandingPage = () => {
             </ul>
           </section>
         </nav>
-        
+
       </div>
       {/* Body */}
       <div className="flex flex-col overflow-hidden">
@@ -73,9 +74,18 @@ const LandingPage = () => {
           <div>
             <div className="flex flex-row text-white gap-x-5 font-sans justify-center items-center mb-10">
               <span className="text-4xl font-Oswald">Sign up</span>
-              <button onClick={() => handleToggle(Toggle)} className="w-32 h-8 border-2 rounded-lg ">Toggle
-
-              </button>
+              <Switch
+                id="custom-switch-component"
+                ripple={false}
+                className="h-full w-full checked:bg-[#fa3d3d] bg-blue-500 "
+                containerProps={{
+                  className: "w-11 h-6",
+                }}
+                circleProps={{
+                  className: "before:hidden left-0.5 border-none",
+                }}
+                onClick={() => handleToggle(Toggle)}
+              />
               <span className="text-4xl font-Oswald">Sign in</span>
             </div>
             {

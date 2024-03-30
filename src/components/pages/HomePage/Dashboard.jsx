@@ -22,12 +22,17 @@ function Dashboard() {
   return (
     <>
       {/* outer Container */}
-      <div >
-        <>hdbfj</>
+      <div ccl >
         {/* User Details Container */}
-        <div>
-          {/* upper part Container */}
-          <div className="bg-cover w-auto h-56 bg-no-repeat bg-slate-50" style={{ backgroundImage: `url(${coverImage})` }}></div>
+        <div className=" w-screen h-auto" >
+          <img className='sm:object-cover h-96 w-full ' src={coverImage ? coverImage : ''} alt="" />
+          <img className='sm:rounded-full w-56 absolute bottom-96 left-80' src={avatar ? avatar : ''} alt="avatar"  />
+        </div>
+        <div className="w-full h-60 bg-black pl-14 flex ">
+          <div className='pl-72'>
+            <span className=' font-bold text-3xl ' >{data ?  data.data.fullname :''}</span>
+          </div>
+          <button>Subcribe</button>
         </div>
         {/* User Body Container */}
         <div>

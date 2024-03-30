@@ -5,8 +5,10 @@ function Home() {
   
   return (
     <>
-    <NavBar />
+    <div className=' sm:overflow-x-hidden '> 
+    <NavBar  />
     <Body/>
+    </div>
     </>
   );
 }
