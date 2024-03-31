@@ -7,7 +7,7 @@ export default {
 
     fontFamily: {
       Poppins: ['"Poppins"', "Madimi One"],
-      Oswald : ['"Poppins"',"Oswald" ]
+      Oswald : ['"Oswald"',"Oswald" ]
       // Add more custom font families as needed
     },
     extend: {},

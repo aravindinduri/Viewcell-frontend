@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react'
 import {
   List,
   ListItem,
-  ListItemPrefix,
 } from '@material-tailwind/react';
 import { NavLink, Link, Outlet } from 'react-router-dom'
+import Tweets from './Tweets';
 import axios from 'axios';
 
 function Dashboard() {
@@ -15,13 +15,10 @@ function Dashboard() {
   useEffect(() => {
     const fetchdata = async () => {
       try {
-        const responce = await axios.get(`/api/v1/users/current-user'`)
+        const responce = await axios.get(`/api/v1/users/current-user`)
         setData(responce.data)
-        console.log(responce.data)
         const subscriber = await axios.get(`/api/v1/subcription/channel-subscribers/${responce.data.data._id}`);
         setSubscribers(subscriber.data)
-        console.log(subscriber.data)
-
       }
       catch (err) {
         console.log(err)
@@ -84,7 +81,7 @@ function Dashboard() {
         </div>
         {/* User Body Container */}
         <div>
-          <Outlet />
+          <Outlet context={{ avatar: avatar ? avatar : '', username: data ? data.data.username : '' }} />
         </div>
       </div>
     </>
