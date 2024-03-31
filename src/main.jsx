@@ -18,28 +18,46 @@ const router = createBrowserRouter([
     element: <Home />,
     children: [
       {
-       path :'/home',
-       element :<Dashboard/>
+        path: '/home',
+        element: <Dashboard />,
+        children: [
+          {
+            path : '/home/uservideos',
+            element : <>User Videos</>
+          },
+          {
+            path : '/home/userplaylist',
+            element : <>user Play list</>
+          },
+          {
+            path : '/home/usertweets',
+            element : <>user Tweets</>
+          },
+          {
+            path : '/home/usersubcribers',
+            element : <>User Subcribers</>
+          }
+        ]
       },
       {
-        path : '/home/likedVideos',
-        element : <LikedVideos/>
+        path: '/home/likedVideos',
+        element: <LikedVideos />
       },
       {
-        path : '/home/history/',
-        element : <WatchHistory/>
+        path: '/home/history/',
+        element: <WatchHistory />
       },
       {
-        path : '/home/myVideos/',
-        element : <>Myvideos</>
+        path: '/home/myVideos/',
+        element: <>Myvideos</>
       },
       {
-        path : '/home/myCollections/',
-        element : <>Collections</>
+        path: '/home/myCollections/',
+        element: <>Collections</>
       },
       {
-        path : '/home/subcribers/',
-        element : <>Subscribers</>
+        path: '/home/subcribers/',
+        element: <>Subscribers</>
       }
     ]
   }

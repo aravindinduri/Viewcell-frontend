@@ -94,10 +94,8 @@ export default function Sidebar() {
             <NavLink>
 
               <List>
-                <hr className="my-2 border-blue-gray-50" />
 
                 <Link to='/home'>
-                  {console.log("clicked")}
                   <ListItem>
                     <ListItemPrefix>
                       <PresentationChartBarIcon className="h-5 w-5" />
@@ -135,6 +133,7 @@ export default function Sidebar() {
                 </ListItem>
 
               </List>
+
             </NavLink>
 
           </Card>

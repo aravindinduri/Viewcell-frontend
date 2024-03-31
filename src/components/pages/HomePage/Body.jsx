@@ -7,7 +7,7 @@ function Body() {
     const navigate = useNavigate()
     return (
         <>
-            <div className='flex flex-row text-white h-lvh bg-blue-gray-500'>
+            <div className='flex flex-row text-white h-lvh bg-black'>
                 <section>
                 <Sidebar/>
                 </section>
