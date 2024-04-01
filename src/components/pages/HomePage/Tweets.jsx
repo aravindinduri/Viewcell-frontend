@@ -13,36 +13,37 @@ import {
 
 export default function Tweets() {
   const data = useOutletContext()
-
   const [tweets, setTweets] = useState([])
+
   useEffect(() => {
-    try {
 
-      const fetchTweets = async () => {
-        const usertweets = await axios.get(`api/v1/tweets/user/:65ff0a86cd7fbecfc74a0bda`)
-        console.log(usertweets.data)
-        setTweets(usertweets.data)
-
+    const fetchTweets = async () => {
+      try {
+        const usertweets = await axios.get(`/api/v1/tweets/user/${data.userId}`)
+        console.log(usertweets.data.data)
+        setTweets(usertweets.data.data)
       }
-      fetchTweets()
+      catch (e) {
+        console.log(e)
+      }
+
     }
-    catch (e) {
-      console.log(e)
-    }
+    console.log(tweets)
+    tweets.length == 0 ? fetchTweets() : []
   }, [])
   function addTweet() {
-    try {
-      const createTweet = async () => {
+    createTweet()
+    const createTweet = async () => {
+      try {
 
         let tweet = document.getElementById('content').value
         const responce = await axios.post('/api/v1/tweets/', {
           content: tweet
         })
       }
-      createTweet()
-    }
-    catch (e) {
-      console.log(e)
+      catch (e) {
+        console.log(e)
+      }
     }
   }
   return (
@@ -53,6 +54,38 @@ export default function Tweets() {
         <input type="text" id="content" placeholder="Enter Your Content" className="bg-transparent outline-none border-gray-100/10 border-2 h-8 text-gray-500 pl-2 rounded-md" />
         <button onClick={addTweet} className="bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white border border-red-500 hover:border-transparent w-28 h-10 rounded-lg  ">Add</button>
       </div>
+      {
+        tweets.map((item) => (
+          <Card color="transparent" shadow={false} className="w-full pl-72">
+          <CardHeader
+            color="transparent"
+            floated={false}
+            shadow={false}
+            className="mx-0 flex items-center gap-4 pt-0 pb-8"
+          >
+            <Avatar
+              size="lg"
+              variant="circular"
+              src={data ? data.avatar : ''}
+              alt="tania andrew"
+            />
+            <div className="flex w-full flex-col gap-0.5">
+              <div className="flex items-center justify-between">
+                <Typography variant="h5" color="blue-gray" className="text-orange-300	">
+                  {item ? item.owner.username : ''}
+                </Typography>
+              </div>
+            </div>
+          </CardHeader>
+          <CardBody className="mb-6 p-0">
+            <Typography>
+              &quot; {item.content} &quot;
+            </Typography>
+          </CardBody>
+        </Card>
+  
+        ))
+      }
       {/* <Card color="transparent" shadow={false} className="w-full pl-72">
         <CardHeader
           color="transparent"
@@ -83,14 +116,13 @@ export default function Tweets() {
         </CardBody>
       </Card> */}
 
-      <ul>
-        {[tweets].map( e =>{
-          return(
-            <li>{e}</li>
-            )
-        })}
-      </ul>
-
+      {/* <div>
+        {
+          tweets.map((e) => (
+            <li key={Math.random(1000000)} >{e.content}</li>
+          ))
+        }
+      </div> */}
     </>
   );
 }

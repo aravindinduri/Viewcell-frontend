@@ -33,7 +33,7 @@ function Dashboard() {
         {/* User Details Container */}
         <div className="sm:w-screen h-auto" >
           <img className='sm:object-cover h-96 w-full ' src={coverImage ? coverImage : ''} alt="Cover-Image" />
-          <img className='sm:rounded-full w-56 absolute bottom-96 left-80' src={avatar ? avatar : ''} alt="avatar" />
+          <img className='sm:rounded-full w-56 bottom-96 left-80 ' src={avatar ? avatar : ''} alt="avatar" />
         </div>
         <div className="sm:h-40 bg-black pl-14 flex justify-between">
           <div className='pl-72 '>
@@ -80,8 +80,9 @@ function Dashboard() {
           </NavLink>
         </div>
         {/* User Body Container */}
-        <div>
-          <Outlet context={{ avatar: avatar ? avatar : '', username: data ? data.data.username : '' , userId  : data ? data.data._id : ''}} />
+        <div >
+          <Outlet context={{ avatar: avatar ? avatar : '', username: data ? data.data.username : '', userId: data ? data.data._id : '' }} />
+      
         </div>
       </div>
     </>

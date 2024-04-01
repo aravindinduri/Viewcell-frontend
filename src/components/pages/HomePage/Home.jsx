@@ -4,7 +4,7 @@ function Home() {
   
   return (
     <>
-    <div className=' sm:overflow-x-hidden '> 
+    <div className=' sm:overflow-x-hidden bg-black '> 
     <NavBar  />
     <Body/>
     </div>
