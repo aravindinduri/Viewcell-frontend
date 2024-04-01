@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import axios from "axios";
 import {
@@ -12,25 +12,48 @@ import {
 
 
 export default function Tweets() {
-  const [tweets,setTweets] = useState(null)
-  function addTweet() {
-    let tweet =  document.getElementById('content').value
-    const responce =  axios.post('/api/v1/tweets/',{
-      content : tweet
-    })
-    console.log(responce.data)
-    console.log( tweet)
-  }
   const data = useOutletContext()
+
+  const [tweets, setTweets] = useState([])
+  useEffect(() => {
+    try {
+
+      const fetchTweets = async () => {
+        const usertweets = await axios.get(`api/v1/tweets/user/:65ff0a86cd7fbecfc74a0bda`)
+        console.log(usertweets.data)
+        setTweets(usertweets.data)
+
+      }
+      fetchTweets()
+    }
+    catch (e) {
+      console.log(e)
+    }
+  }, [])
+  function addTweet() {
+    try {
+      const createTweet = async () => {
+
+        let tweet = document.getElementById('content').value
+        const responce = await axios.post('/api/v1/tweets/', {
+          content: tweet
+        })
+      }
+      createTweet()
+    }
+    catch (e) {
+      console.log(e)
+    }
+  }
   return (
 
     <>
       <div className="flex flex-row justify-center mr-56 gap-5 mt-6">
         <label className="font-Oswald"> Add New Tweet  </label>
         <input type="text" id="content" placeholder="Enter Your Content" className="bg-transparent outline-none border-gray-100/10 border-2 h-8 text-gray-500 pl-2 rounded-md" />
-        <button onClick={addTweet}className="bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white border border-red-500 hover:border-transparent w-28 h-10 rounded-lg  ">Add</button>
+        <button onClick={addTweet} className="bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white border border-red-500 hover:border-transparent w-28 h-10 rounded-lg  ">Add</button>
       </div>
-      <Card color="transparent" shadow={false} className="w-full pl-72">
+      {/* <Card color="transparent" shadow={false} className="w-full pl-72">
         <CardHeader
           color="transparent"
           floated={false}
@@ -58,7 +81,16 @@ export default function Tweets() {
             affordable, very humble guys !!!&quot;
           </Typography>
         </CardBody>
-      </Card>
+      </Card> */}
+
+      <ul>
+        {[tweets].map( e =>{
+          return(
+            <li>{e}</li>
+            )
+        })}
+      </ul>
+
     </>
   );
 }
