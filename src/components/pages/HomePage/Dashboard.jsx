@@ -33,9 +33,8 @@ function Dashboard() {
         {/* User Details Container */}
         <div className="sm:w-screen h-auto" >
           <img className='sm:object-cover h-96 w-full ' src={coverImage ? coverImage : ''} alt="Cover-Image" />
-          <img className='sm:rounded-full w-56 bottom-96 left-80 ' src={avatar ? avatar : ''} alt="avatar" />
-        </div>
-        <div className="sm:h-40 bg-black pl-14 flex justify-between">
+          <img className='sm:rounded-full w-56 bottom-96 left-80  ' src={avatar ? avatar : ''} alt="avatar" />
+        <div className="sm:h-40 bg-black pl-14 flex justify-between -mt-32">
           <div className='pl-72 '>
             <p className=' font-bold text-3xl ' > {data ? data.data.fullname : ''}</p>
             <p className='text-xl text-gray-500'> @{data ? data.data.username : ''}</p>
@@ -45,11 +44,12 @@ function Dashboard() {
           </div>
           <button className="bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-2 px-4 border border-red-500 hover:border-transparent w-28 h-10 rounded-lg mr-96 mt-10  ">Subcribe</button>
         </div>
+        </div>
         <div >
 
           <NavLink className='bg-black flex border-t-2 border-b-2 pl-0 border-blue-gray-300 sm:shrink'>
 
-            <List className='flex-row text-blue-gray-100  pl-80 justify-around'>
+            <List className='flex-row text-blue-gray-100  pl-80 justify-around flex-shrink'>
 
               <Link to='/home/uservideos' >
                 <ListItem className='w-56 pl-20' >
