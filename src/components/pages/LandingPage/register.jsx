@@ -36,12 +36,9 @@ const RegisterForm = () => {
       });
 
       if (response.status === 200) {
-        // Registration successful
         console.log("User registered successfully!");
-        // Clear input fields after registration
         setUserDetails(initialDetails);
       } else {
-        // Handle registration error (e.g., display an error message)
         console.error("Registration failed. Please try again later.");
       }
     } catch (error) {
