@@ -1,10 +1,11 @@
 import axios from 'axios'
-import { useState } from 'react'
-import {
-  Card,
-  CardBody,
-} from "@material-tailwind/react";
+import { useEffect, useState } from 'react'
+import React from 'react'
+import ReactPlayer from 'react-player'
 
+
+
+import Video from './Video/Video.jsx';
 export default function UserVideos() {
   const initialVideoDetails = {
     title: '',
@@ -13,7 +14,7 @@ export default function UserVideos() {
     thumbnail: null
   }
   const [videoDetails, setVideoDetails] = useState(initialVideoDetails)
-
+  const [videos, setVideos] = useState([])
   const videoUpload = async () => {
     const formData = new FormData()
     Object.entries(videoDetails).forEach(([key, value]) => {
@@ -30,9 +31,24 @@ export default function UserVideos() {
       console.log(e)
     }
   }
+  useEffect(() => {
+    const fetchVideos = async () => {
+      try {
+
+        const fetchvideos = await axios.get('/api/v1/videos/')
+        setVideos(fetchvideos.data.data)
+        console.log(fetchvideos)
+      }
+      catch (e) {
+        console.log(e)
+      }
+    }
+    fetchVideos()
+  }, [])
 
   return (
     <div className="container mx-auto px-4">
+      <h3 className='font-serif text-2xl'>Upload a Video</h3>
       <div className="flex flex-col items-center mt-12">
         <div className="flex flex-col w-full gap-4 md:w-96">
           <label htmlFor="video-title" className="text-xl font-serif">Video Title</label>
@@ -79,14 +95,10 @@ export default function UserVideos() {
       <div className="mt-12">
         <h3 className=" text-3xl sm:text-2xl font-serif">Uploaded Videos</h3>
         <div className="flex flex-wrap justify-center ">
-          <Card className="max-w-[24rem] overflow-hidden">
-            <CardBody>
-              <video className="w-full h-auto" controls>
-                <source src="https://docs.material-tailwind.com/demo.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </CardBody>
-          </Card>
+          {/* <Video video={videos} /> */}
+          <ReactPlayer className = 'w-32 h-24' url={videos.length > 0 ? videos[0].videoFile : ''} playing controls	light = {videos.length > 0 ? videos[0].Thumbnail : ''} 	/>
+
+        
         </div>
       </div>
     </div>

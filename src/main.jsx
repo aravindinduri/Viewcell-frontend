@@ -8,7 +8,7 @@ import Home from './components/pages/HomePage/Home.jsx'
 import Dashboard from './components/pages/HomePage/Dashboard.jsx'
 import LikedVideos from './components/pages/HomePage/LikedVideos.jsx'
 import WatchHistory from './components/pages/HomePage/WatchHistory.jsx'
-import  Tweets from './components/pages/HomePage/Tweets.jsx'
+import  Tweets from './components/pages/HomePage/Tweets/Tweets.jsx'
 import UserVideos from './components/pages/HomePage/UserVideos.jsx'
 
 const router = createBrowserRouter([

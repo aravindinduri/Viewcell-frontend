@@ -82,7 +82,7 @@
 //         {/* User Body Container */}
 //         <div >
 //           <Outlet context={{ avatar: avatar ? avatar : '', username: data ? data.data.username : '', userId: data ? data.data._id : '' }} />
-      
+
 //         </div>
 //       </div>
 //     </>
