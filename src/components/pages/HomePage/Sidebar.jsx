@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { FcLike } from "react-icons/fc";
 import { NavLink, Link } from "react-router-dom";
@@ -22,9 +21,19 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 
+const SidebarItem = ({ icon, text, to }) => (
+  <Link to={to}>
+    <ListItem>
+      <ListItemPrefix>
+        {icon}
+      </ListItemPrefix>
+      {text}
+    </ListItem>
+  </Link>
+);
+
 export default function Sidebar() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-
 
   const openDrawer = () => setIsDrawerOpen(true);
   const closeDrawer = () => setIsDrawerOpen(false);
@@ -33,56 +42,19 @@ export default function Sidebar() {
     <>
       <div className="hidden sm:block text-white h-full">
         <List className="bg-[#000] flex flex-col gap-7 text-white h-full">
-          <Link to='/home/'>
-            <ListItem>
-              <ListItemPrefix>
-                <PresentationChartBarIcon className="h-5 w-5" />
-              </ListItemPrefix>
-              Dashboared
-            </ListItem>
-          </Link>
-
-          <Link to='/home/likedVideos'>
-            <ListItem>
-              <ListItemPrefix>
-                <FcLike />
-              </ListItemPrefix>
-              Liked Videos
-            </ListItem>
-          </Link>
-
-          <ListItem>
-            <ListItemPrefix>
-              <Avatar
-                variant="circular"
-                alt="user"
-                className="border-1 border-white w-8 h-8 hover:z-10 focus:z-10"
-                src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1061&q=80"
-              />            </ListItemPrefix>
-            Profile
-          </ListItem>
-
-          <ListItem>
-            <ListItemPrefix>
-              <Cog6ToothIcon className="h-5 w-5" />
-            </ListItemPrefix>
-            Settings
-          </ListItem>
-
-          <ListItem>
-            <ListItemPrefix>
-              <PowerIcon className="h-5 w-5" />
-            </ListItemPrefix>
-            Log Out
-          </ListItem>
+          <SidebarItem to='/home/' icon={<PresentationChartBarIcon className="h-5 w-5" />} text="Dashboard" />
+          <SidebarItem to='/home/likedVideos' icon={<FcLike />} text="Liked Videos" />
+          <SidebarItem to='/home/profile' icon={<Avatar variant="circular" alt="user" className="border-1 border-white w-8 h-8 hover:z-10 focus:z-10" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1061&q=80" />} text="Profile" />
+          <SidebarItem to='/home/settings' icon={<Cog6ToothIcon className="h-5 w-5" />} text="Settings" />
+          <SidebarItem to='/home/logout' icon={<PowerIcon className="h-5 w-5" />} text="Log Out" />
         </List>
       </div>
       <div className="block sm:hidden ">
         <IconButton variant="text" size="lg" onClick={openDrawer}>
           {isDrawerOpen ? (
-            <XMarkIcon className="h-8 w-8 stroke-2" />
+            <XMarkIcon className="h-8 w-8 stroke-2 text-white" />
           ) : (
-            <Bars3Icon className="h-8 w-8 stroke-2" />
+            <Bars3Icon className="h-8 w-8 stroke-2 text-white" />
           )}
         </IconButton>
         <Drawer open={isDrawerOpen} onClose={closeDrawer}>
@@ -92,50 +64,14 @@ export default function Sidebar() {
             className="h-[calc(100vh-2rem)] w-full p-4"
           >
             <NavLink>
-
               <List>
-
-                <Link to='/home'>
-                  <ListItem>
-                    <ListItemPrefix>
-                      <PresentationChartBarIcon className="h-5 w-5" />
-                    </ListItemPrefix>
-                    Dashboared
-                  </ListItem>
-                </Link>
-
-                <ListItem>
-                  <ListItemPrefix>
-                    <FcLike />
-                  </ListItemPrefix>
-                  Liked Videos
-                </ListItem>
-
-                <ListItem>
-                  <ListItemPrefix>
-                    <UserCircleIcon className="h-5 w-5" />
-                  </ListItemPrefix>
-                  Profile
-                </ListItem>
-
-                <ListItem>
-                  <ListItemPrefix>
-                    <Cog6ToothIcon className="h-5 w-5" />
-                  </ListItemPrefix>
-                  Settings
-                </ListItem>
-
-                <ListItem>
-                  <ListItemPrefix>
-                    <PowerIcon className="h-5 w-5" />
-                  </ListItemPrefix>
-                  Log Out
-                </ListItem>
-
+                <SidebarItem to='/home/' icon={<PresentationChartBarIcon className="h-5 w-5" />} text="Dashboard" />
+                <SidebarItem to='/home/likedVideos' icon={<FcLike />} text="Liked Videos" />
+                <SidebarItem to='/home/profile' icon={<UserCircleIcon className="h-5 w-5" />} text="Profile" />
+                <SidebarItem to='/home/settings' icon={<Cog6ToothIcon className="h-5 w-5" />} text="Settings" />
+                <SidebarItem to='/home/logout' icon={<PowerIcon className="h-5 w-5" />} text="Log Out" />
               </List>
-
             </NavLink>
-
           </Card>
         </Drawer>
       </div>

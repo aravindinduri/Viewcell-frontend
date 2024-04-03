@@ -4,10 +4,8 @@ function Home() {
   
   return (
     <>
-    <div className=' sm:overflow-x-hidden bg-black overflow-y-scroll '> 
     <NavBar  />
     <Body/>
-    </div>
     </>
   );
 }
