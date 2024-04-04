@@ -10,6 +10,7 @@ import LikedVideos from './components/pages/HomePage/LikedVideos.jsx'
 import WatchHistory from './components/pages/HomePage/WatchHistory.jsx'
 import  Tweets from './components/pages/HomePage/Tweets/Tweets.jsx'
 import UserVideos from './components/pages/HomePage/UserVideos.jsx'
+import WatchScreen from './components/pages/HomePage/watchScreen/WatchScreen.jsx'
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
             element : <>User Subcribers</>
           }
         ]
+      },
+      {
+        path : '/home/watchscreen/:videoId',
+        element : <WatchScreen/>
       },
       {
         path: '/home/likedVideos',

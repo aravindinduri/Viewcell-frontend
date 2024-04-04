@@ -1,49 +1,50 @@
-import axios from 'axios'
-import { useEffect, useState } from 'react'
-import ReactPlayer from 'react-player'
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import VideoCard from './Video/VideoCard.jsx';
 
-
-
-import Video from './Video/Video.jsx';
 export default function UserVideos() {
   const initialVideoDetails = {
     title: '',
     description: '',
     videoFile: null,
     thumbnail: null
-  }
-  const [videoDetails, setVideoDetails] = useState(initialVideoDetails)
-  const [videos, setVideos] = useState([])
+  };
+  const [videoDetails, setVideoDetails] = useState(initialVideoDetails);
+  const [videos, setVideos] = useState([]);
+
   const videoUpload = async () => {
-    const formData = new FormData()
+    const formData = new FormData();
     Object.entries(videoDetails).forEach(([key, value]) => {
       formData.append(key, value);
-    })
+    });
     try {
       const res = await axios.post('/api/v1/videos/', formData, {
         headers: {
-          'Content-Type': 'multipart/form-data',
-        },
+          'Content-Type': 'multipart/form-data'
+        }
       });
-      console.log(res)
+      console.log(res);
+      fetchVideos();
     } catch (e) {
-      console.log(e)
+      console.log(e);
     }
-  }
-  useEffect(() => {
-    const fetchVideos = async () => {
-      try {
+  };
 
-        const fetchvideos = await axios.get('/api/v1/videos/')
-        setVideos(fetchvideos.data.data)
-        console.log(fetchvideos)
-      }
-      catch (e) {
-        console.log(e)
-      }
+  const fetchVideos = async () => {
+    try {
+      const response = await axios.get('/api/v1/videos/');
+      setVideos(response.data.data);
+      console.log('wefv',videos)
+      console.log(response.data.data);
+    } catch (error) {
+      console.log(error);
     }
-    fetchVideos()
-  }, [])
+  };
+
+  useEffect(() => {
+    fetchVideos();
+  }, []);
 
   return (
     <div className="container mx-auto px-4">
@@ -94,10 +95,15 @@ export default function UserVideos() {
       <div className="mt-12">
         <h3 className=" text-3xl sm:text-2xl font-serif">Uploaded Videos</h3>
         <div className="flex flex-wrap justify-center ">
-          <Video videos={videos} />
-        
+        {console.log('wefv',videos)}
+
+          {videos.map((video) => (
+            <Link  to= {`/home/watchscreen/${video._id}`}>
+              <VideoCard video={video} />
+            </Link>
+          ))}
         </div>
       </div>
     </div>
-  )
+  );
 }
