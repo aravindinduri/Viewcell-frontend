@@ -30,7 +30,7 @@ const LoginForm = () => {
   }
 
   return (
-    <div className='transition-all'>
+    <div className='transition-all backdrop-blur-sm'>
       <div className='flex flex-col text-white gap-6 justify-center items-center border-2 w-96 h-96 rounded-lg'>
         <h2 className='text-3xl font-Poppins'>Login</h2>
         <input type="text" id='email' placeholder="  Enter your Email" required className=' h-10 text-black rounded-lg' value={details.email} onChange={(e) => setDetails({ ...details, email: e.target.value })} />

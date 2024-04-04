@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import React from 'react'
 import ReactPlayer from 'react-player'
 
 
@@ -95,9 +94,7 @@ export default function UserVideos() {
       <div className="mt-12">
         <h3 className=" text-3xl sm:text-2xl font-serif">Uploaded Videos</h3>
         <div className="flex flex-wrap justify-center ">
-          {/* <Video video={videos} /> */}
-          <ReactPlayer className = 'w-32 h-24' url={videos.length > 0 ? videos[0].videoFile : ''} playing controls	light = {videos.length > 0 ? videos[0].Thumbnail : ''} 	/>
-
+          <Video videos={videos} />
         
         </div>
       </div>

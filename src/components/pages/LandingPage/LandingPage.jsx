@@ -24,8 +24,8 @@ const LandingPage = () => {
       <div>
         <nav className="flex flex-row justify-between bg-[#000]">
           <section>
-            <ul className="flex space-x-4 p-4">
-              <AiOutlineMenu onClick={() => setOpen(true)} className={clsx("text-3xl text-white cursor-pointer sm:hidden transition-all", isSideBarOpen && "invisible")} />
+            <ul className="flex">
+              <AiOutlineMenu onClick={() => setOpen(true)} className={clsx("text-3xl text-white cursor-pointer mt-6 ml-2 sm:hidden transition-all", isSideBarOpen && "invisible")} />
               <li className="cursor-pointer text-3xl pl-4"><Logo /></li>
             </ul>
           </section>
@@ -41,10 +41,10 @@ const LandingPage = () => {
               </ul>
             </div>
           </div>
-          <section className="flex flex-direction:col">
-            <ul className="flex p-4 space-x-4 ">
-              <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded-lg">Sign up</button>
-              <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded-lg">Sign in</button>
+          <section className="flex mt-6 mr-3">
+            <ul className="flex  gap-3">
+              <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white  w-24 h-10 border border-blue-500 hover:border-transparent rounded-lg">Sign up</button>
+              <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white border w-24 h-10 border-blue-500 hover:border-transparent rounded-lg">Sign in</button>
             </ul>
           </section>
         </nav>

@@ -47,7 +47,7 @@ const RegisterForm = () => {
   }
 
   return (
-    <div className='transition-all'>
+    <div className='transition-all  backdrop-blur-sm'>
       <div className='flex flex-col text-white gap-6 justify-center items-center border-2 w-auto h-auto rounded-lg p-4 '>
         <h2 className='text-3xl font-Poppins '>Sign Up</h2>
         {/*email */}
