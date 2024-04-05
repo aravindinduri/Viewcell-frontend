@@ -1,5 +1,5 @@
 import React from 'react'
-import Sidebar from './Sidebar';
+import SideBar from './Sidebar';
 import {  useNavigate } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 
@@ -9,8 +9,8 @@ function Body() {
         <>
             <div className='flex flex-row text-white h-lvh bg-black'>
                 <section>
-                <Sidebar/>
-                </section>
+                    <SideBar/>
+\                </section>
                 <section className='flex '>
                     <Outlet />
                 </section>

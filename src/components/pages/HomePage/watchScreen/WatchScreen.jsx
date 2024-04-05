@@ -1,38 +1,27 @@
-// import React from 'react'
-
-// function WatchScreen() {
-//   return (
-//     <div>WatchScreen</div>
-//   )
-// }
-
-// export default WatchScreen
-
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Video from '../Video/Video';
-function WatchScreen({ videoUrl }) {
-    const {videoId} = useParams()
+
+function WatchScreen() {
+    const { videoId } = useParams();
     const [videoData, setVideoData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-
     useEffect(() => {
-        if (videoId) {
-            const fetchVideoData = async () => {
-                try {
-                    const response = await axios.get(`/api/v1/videos/${videoId}`)
-                    console.log(response)
-                    setVideoData(response.data.data);
-                    setLoading(false);
-                } catch (error) {
-                    setError('Failed to fetch video data.');
-                    setLoading(false);
-                }
-            };
+        const fetchVideoData = async () => {
+            try {
+                const response = await axios.get(`/api/v1/videos/${videoId}`);
+                setVideoData(response.data.data);
+                setLoading(false);
+            } catch (error) {
+                setError('Failed to fetch video data.');
+                setLoading(false);
+            }
+        };
 
+        if (videoId) {
             fetchVideoData();
         }
     }, [videoId]);
@@ -50,28 +39,23 @@ function WatchScreen({ videoUrl }) {
     }
 
     return (
-        <div className="flex flex-col lg:flex-row max-w-screen-xl mx-auto">
-            <div className="lg:w-3/4 lg:pr-8">
-                {/* Video player */}
-                <Video video={videoData}/>
-                
-                {/* Video details */}
-                <div className="mt-4">
-                    <h1 className="text-xl font-semibold">{videoData.title}</h1>
-                    <p className="text-sm text-gray-600">{videoData.description}</p>
+        <div className="max-w-screen-xl mx-auto px-4 lg:flex">
+            <div className="lg:w-3/4 lg:pr-8 xs:w-full">
+                <div className="relative aspect-w-16 aspect-h-9 bg-black">
+                    <Video video={videoData} />
                 </div>
-
-                {/* Comments section */}
+                <div className="mt-6">
+                    <h1 className="text-2xl font-semibold text-gray-800">{videoData.Title}</h1>
+                    <p className="text-sm text-gray-600 mt-2">{videoData.Description}</p>
+                </div>
                 <div className="mt-8">
                     <h2 className="text-lg font-semibold mb-4">Comments</h2>
-                    {/* Add comments component */}
+                    <div>Comments Section Placeholder</div>
                 </div>
             </div>
-
-            {/* Related videos */}
-            <div className="lg:w-1/4 mt-8 lg:mt-0">
+            <div className="lg:w-1/4 mt-8 lg:mt-0 lg:pl-8 xs:w-full">
                 <h2 className="text-lg font-semibold mb-4">Related Videos</h2>
-                {/* Add related videos component */}
+                <div>Related Videos Placeholder</div>
             </div>
         </div>
     );

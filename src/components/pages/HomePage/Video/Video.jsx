@@ -5,9 +5,8 @@ function Video({ video }) {
         return null;
     }
     return (
-        <div >
-            <ReactPlayer
-                className='w-full md:w-1/3 md:max-h-56'
+        <div className='  max-w-[300px]  max-h-96 : sm:max-w-fit'  >
+            <ReactPlayer 
                 url={video.videoFile}
                 playing
                 controls

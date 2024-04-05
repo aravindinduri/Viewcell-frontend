@@ -92,16 +92,16 @@ export default function UserVideos() {
           </button>
         </div>
       </div>
-      <div className="mt-12">
+      <div>
         <h3 className=" text-3xl sm:text-2xl font-serif">Uploaded Videos</h3>
-        <div className="flex flex-wrap justify-center ">
-        {console.log('wefv',videos)}
+        <div className=" flex flex-wrap ">
 
           {videos.map((video) => (
             <Link  to= {`/home/watchscreen/${video._id}`}>
               <VideoCard video={video} />
             </Link>
           ))}
+
         </div>
       </div>
     </div>
