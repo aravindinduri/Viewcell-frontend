@@ -8,9 +8,6 @@ function Body() {
     return (
         <>
             <div className='flex flex-row text-white h-lvh bg-black'>
-                <section>
-                    <SideBar/>
-\                </section>
                 <section className='flex '>
                     <Outlet />
                 </section>

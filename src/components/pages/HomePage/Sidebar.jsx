@@ -90,11 +90,10 @@
 
 // export default Sidebar
 
-import React, { useState } from 'react';
-
+import { useState } from 'react';
+import { NavLink, Link } from 'react-router-dom';
 import {
   IconButton,
-  Typography,
   List,
   ListItem,
   ListItemPrefix,
@@ -119,22 +118,18 @@ import {
 
 
 function SideBar() {
-  const [open, setOpen] = React.useState(0);
-  const [openAlert, setOpenAlert] = React.useState(true);
-  const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
 
-  const handleOpen = (value) => {
-    setOpen(open === value ? 0 : value);
-  };
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
 
   const openDrawer = () => setIsDrawerOpen(true);
   const closeDrawer = () => setIsDrawerOpen(false);
 
   return (
     <>
-      <IconButton variant="text" size="lg" onClick={openDrawer} className='text-white absolute -mt-20 sm:mt-0'>
+      <IconButton variant="text" size="lg" onClick={openDrawer} className='text-white bg-blue-gray-500'>
         {isDrawerOpen ? (
-          <XMarkIcon className="h-8 w-8 stroke-2" />
+          <XMarkIcon className="h-8 w-8 stroke-2 " />
         ) : (
           <Bars3Icon className="h-8 w-8 stroke-2" />
         )}
@@ -145,67 +140,77 @@ function SideBar() {
           shadow={false}
           className="h-[calc(100vh-2rem)] w-full p-4"
         >
-          <List>
-          <ListItem>
-              <ListItemPrefix>
-                <InboxIcon className="h-5 w-5" />
-              </ListItemPrefix>
-              Home
-              <ListItemSuffix>
-              </ListItemSuffix>
-            </ListItem>
-          <ListItem>
-              <ListItemPrefix>
-                <InboxIcon className="h-5 w-5" />
-              </ListItemPrefix>
-              Dashboard
-              <ListItemSuffix>
-              </ListItemSuffix>
-            </ListItem>
 
-            <ListItem>
-              <ListItemPrefix>
-                <InboxIcon className="h-5 w-5" />
-              </ListItemPrefix>
-              Liked Videos
-              <ListItemSuffix>
-              </ListItemSuffix>
-            </ListItem>
-            <ListItem>
-              <ListItemPrefix>
-                <InboxIcon className="h-5 w-5" />
-              </ListItemPrefix>
-              History
-              <ListItemSuffix>
-              </ListItemSuffix>
-            </ListItem>
-            <ListItem>
-              <ListItemPrefix>
-                <InboxIcon className="h-5 w-5" />
-              </ListItemPrefix>
-              Inbox
-              <ListItemSuffix>
-              </ListItemSuffix>
-            </ListItem>
-            <ListItem>
-              <ListItemPrefix>
-                <UserCircleIcon className="h-5 w-5" />
-              </ListItemPrefix>
-              Profile
-            </ListItem>
-            <ListItem>
-              <ListItemPrefix>
-                <Cog6ToothIcon className="h-5 w-5" />
-              </ListItemPrefix>
-              Settings
-            </ListItem>
-            <ListItem>
-              <ListItemPrefix>
-                <PowerIcon className="h-5 w-5" />
-              </ListItemPrefix>
-              Log Out
-            </ListItem>
+
+          <List>
+            <NavLink>
+              <Link to='/home/'>
+                <ListItem>
+                  <ListItemPrefix>
+                    <InboxIcon className="h-5 w-5" />
+                  </ListItemPrefix>
+                  Home
+                  <ListItemSuffix>
+                  </ListItemSuffix>
+                </ListItem>
+              </Link>
+              <Link to='/home/profile'>
+                <ListItem>
+                  <ListItemPrefix>
+                    <UserCircleIcon className="h-5 w-5" />
+                  </ListItemPrefix>
+                  Profile
+                </ListItem>
+              </Link>
+              <ListItem>
+                <ListItemPrefix>
+                  <InboxIcon className="h-5 w-5" />
+                </ListItemPrefix>
+                Dashboard
+                <ListItemSuffix>
+                </ListItemSuffix>
+              </ListItem>
+
+              <ListItem>
+                <ListItemPrefix>
+                  <InboxIcon className="h-5 w-5" />
+                </ListItemPrefix>
+                Liked Videos
+                <ListItemSuffix>
+                </ListItemSuffix>
+              </ListItem>
+              <ListItem>
+                <ListItemPrefix>
+                  <InboxIcon className="h-5 w-5" />
+                </ListItemPrefix>
+                History
+                <ListItemSuffix>
+                </ListItemSuffix>
+              </ListItem>
+              <ListItem>
+                <ListItemPrefix>
+                  <InboxIcon className="h-5 w-5" />
+                </ListItemPrefix>
+                Inbox
+                <ListItemSuffix>
+                </ListItemSuffix>
+              </ListItem>
+
+              <ListItem>
+                <ListItemPrefix>
+                  <Cog6ToothIcon className="h-5 w-5" />
+                </ListItemPrefix>
+                Settings
+              </ListItem>
+              <ListItem>
+                <ListItemPrefix>
+                  <PowerIcon className="h-5 w-5" />
+                </ListItemPrefix>
+                Log Out
+              </ListItem>
+            </NavLink>
           </List>
+
 
         </Card>
       </Drawer>

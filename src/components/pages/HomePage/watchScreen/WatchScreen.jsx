@@ -44,13 +44,8 @@ function WatchScreen() {
                 <div className="relative aspect-w-16 aspect-h-9 bg-black">
                     <Video video={videoData} />
                 </div>
-                <div className="mt-6">
-                    <h1 className="text-2xl font-semibold text-gray-800">{videoData.Title}</h1>
-                    <p className="text-sm text-gray-600 mt-2">{videoData.Description}</p>
-                </div>
-                <div className="mt-8">
-                    <h2 className="text-lg font-semibold mb-4">Comments</h2>
-                    <div>Comments Section Placeholder</div>
+                <div className="mt-8 sm:mt-32">
+                    <h2 className="text-lg font-semibold mb-4 ml-2">Comments</h2>
                 </div>
             </div>
             <div className="lg:w-1/4 mt-8 lg:mt-0 lg:pl-8 xs:w-full">
