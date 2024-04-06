@@ -46,7 +46,7 @@ const VideoCard = ({ video }) => {
                 alt="thumnails"
                 src={video.Thumbnail}
             />
-            <div className="mt">
+            <div >
                 <p className="font-bold line-clamp-2 my-2">{video.Title}</p>
                 <div className="flex flex-row gap-3">
                 <img src={video.owner.avatar} alt="avatar" className=" w-6 rounded-full" />

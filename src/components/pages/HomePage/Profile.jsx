@@ -259,16 +259,13 @@
 
 import React, { useState, useEffect } from 'react';
 import { List, ListItem } from '@material-tailwind/react';
-import { NavLink, Link, Outlet } from 'react-router-dom';
+import {  Link, Outlet } from 'react-router-dom';
 import axios from 'axios';
 
 import {
   Card,
-  CardHeader,
   CardBody,
-  CardFooter,
   Typography,
-  Button,
 } from "@material-tailwind/react";
 
 

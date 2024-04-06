@@ -127,7 +127,7 @@ function SideBar() {
 
   return (
     <>
-      <IconButton variant="text" size="lg" onClick={openDrawer} className='text-white bg-blue-gray-500'>
+      <IconButton variant="text" size="lg" onClick={openDrawer} className='text-white bg-blue-gray-900'>
         {isDrawerOpen ? (
           <XMarkIcon className="h-8 w-8 stroke-2 " />
         ) : (

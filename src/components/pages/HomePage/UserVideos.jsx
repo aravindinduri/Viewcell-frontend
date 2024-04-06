@@ -101,15 +101,6 @@ export default function UserVideos() {
               <VideoCard video={video} />
             </Link>
           ))}
-               {videos.map((video) => (
-            <Link  to= {`/home/watchscreen/${video._id}`}>
-              <VideoCard video={video} />
-            </Link>
-          ))}     {videos.map((video) => (
-            <Link  to= {`/home/watchscreen/${video._id}`}>
-              <VideoCard video={video} />
-            </Link>
-          ))}
 
         </div>
       </div>
