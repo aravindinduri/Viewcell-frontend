@@ -73,7 +73,16 @@ const VideoDetails = ({ videoDetail }) => {
         </div>
 
         <button
-          onClick={() => setSubscribed(!subscribed)}
+          onClick={async () => {setSubscribed(!subscribed)
+            try{
+                await axios.post(`/api/v1/subcription/c/${videoDetail.owner._id}`)
+            }
+            catch(e)
+            {
+              console.log(e)
+            }
+          }
+          }
           className="bg-slate-700 text-white rounded-full py-2 font-serif px-5 cursor-pointer bg-transparent border-red-800 border-2 hover:bg-red-600"
         >
           {subscribed ? "UnSubscribe" : "Subscribe"}
