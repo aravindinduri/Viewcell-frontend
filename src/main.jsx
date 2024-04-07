@@ -6,13 +6,14 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import LandingPage from './components/pages/LandingPage/LandingPage.jsx'
 import Home from './components/pages/HomePage/Home.jsx'
 import Profile from './components/pages/HomePage/profiles/Profile.jsx'
-import UserProfile from './components/pages/HomePage/profiles/userprofile/UserProfile.jsx'
+import UserProfile from './components/pages/HomePage/Video/VideoDetails.jsx/'
 import LikedVideos from './components/pages/HomePage/LikedVideos.jsx'
 import WatchHistory from './components/pages/HomePage/WatchHistory.jsx'
 import Tweets from './components/pages/HomePage/Tweets/Tweets.jsx'
 import UserVideos from './components/pages/HomePage/UserVideos.jsx'
 import WatchScreen from './components/pages/HomePage/watchScreen/WatchScreen.jsx'
 import HomeScreen from './components/pages/HomePage/Screens/HomeScreen.jsx'
+import Settings from './components/pages/HomePage/settings/Settings.jsx'
 
 const router = createBrowserRouter([
   {
@@ -57,10 +58,9 @@ const router = createBrowserRouter([
         path : '/home/userprofile',
         element : <UserProfile/>
       },
-
       {
-        path: '/home/myVideos/',
-        element: <>Myvideos</>
+        path: '/home/settings/',
+        element: <Settings/>
       },
       {
         path: '/home/myCollections/',
