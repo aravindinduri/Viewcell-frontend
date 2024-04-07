@@ -38,7 +38,6 @@ const VideoCard = ({ video }) => {
     if (!video) {
         return null;
     }
-    console.log('sd', video)
     return (
         <div className="md:p-2 m-2 w-80 md:w-72 rounded">
             <img

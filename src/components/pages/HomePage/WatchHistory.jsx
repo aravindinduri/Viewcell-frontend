@@ -1,8 +1,34 @@
-import React from 'react'
-
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import VideoCard from './Video/VideoCard'
 function WatchHistory() {
+  const [history, setHistory] = useState([])
+  const fetchUserWatchHistory = async () => {
+    try {
+      const res = await axios.get('/api/v1/users/history')
+      console.log(res.data)
+      setHistory(res.data.data);
+    }
+    catch (e) {
+      console.log(e)
+    }
+  }
+  useEffect(() => {
+    fetchUserWatchHistory()
+  }, [])
   return (
-    <div>WatchHistory</div>
+    <>
+      <div className=' mt-7 md:ml-20 lg:ml-60'>
+      <h2 className="text-lg font-serif mb-4 ml-2">User Watch History</h2>
+
+
+        {
+          history.map((video) => (
+            <VideoCard video={video} />
+          ))
+        }
+    </div >
+        </>
   )
 }
 

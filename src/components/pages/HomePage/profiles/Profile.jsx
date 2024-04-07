@@ -303,7 +303,7 @@ function Profile() {
         <Card className=' bg-black w-screen h-fit '>
 
           <CardBody >
-            <div className=' w-full h-48 sm: h-auto'>
+            <div className=' w-full h-48 sm:h-auto'>
               <img src={coverImage} alt="Cover-Image" srcset="" className=' object-cover h-48 border-2 w-full sm:h-96' />
             </div>
             <div className=' flex gap-5 '>
@@ -312,14 +312,12 @@ function Profile() {
                 <span className='text-2xl text-white' >{ fullname}</span>
                 <span className='text-lg' >@ { username }</span>
                 <span className='text-xl' >Subscribers {subscriberCount}</span>
-                <button className='bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white  sm:w-24 h-10 border border-red-500 hover:border-transparent rounded-lg'>Subcribe</button>
-
               </Typography>
             </div>
           </CardBody>
         </Card>
-        <Card className="w-full bg-blue-gray-900">
-          <List className='flex flex-row justify-center'>
+        <Card className="w-full bg-blue-gray-900 ">
+          <List className='flex flex-row justify-center text-gray-300 font-serif'>
             <Link to='/home/profile/videos'>
               <ListItem >Videos</ListItem>
             </Link>

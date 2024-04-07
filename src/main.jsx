@@ -5,7 +5,8 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 // Importing Components
 import LandingPage from './components/pages/LandingPage/LandingPage.jsx'
 import Home from './components/pages/HomePage/Home.jsx'
-import Profile from './components/pages/HomePage/Profile.jsx'
+import Profile from './components/pages/HomePage/profiles/Profile.jsx'
+import UserProfile from './components/pages/HomePage/profiles/UserProfile.jsx'
 import LikedVideos from './components/pages/HomePage/LikedVideos.jsx'
 import WatchHistory from './components/pages/HomePage/WatchHistory.jsx'
 import Tweets from './components/pages/HomePage/Tweets/Tweets.jsx'
@@ -52,6 +53,11 @@ const router = createBrowserRouter([
         path: '/home/history/',
         element: <WatchHistory />
       },
+      {
+        path : '/home/userprofile',
+        element : <UserProfile/>
+      },
+
       {
         path: '/home/myVideos/',
         element: <>Myvideos</>

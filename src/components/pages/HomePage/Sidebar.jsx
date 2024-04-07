@@ -92,6 +92,14 @@
 
 import { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import { RiHome8Fill } from "react-icons/ri";
+import { GoHistory } from "react-icons/go";
+import { FcLike } from "react-icons/fc";
+import { CgProfile } from "react-icons/cg";
+import { RiDashboardFill } from "react-icons/ri";
+
+
+
 import {
   IconButton,
   List,
@@ -104,7 +112,6 @@ import {
 } from "@material-tailwind/react";
 import {
 
-  UserCircleIcon,
   Cog6ToothIcon,
   InboxIcon,
   PowerIcon,
@@ -127,6 +134,7 @@ function SideBar() {
 
   return (
     <>
+
       <IconButton variant="text" size="lg" onClick={openDrawer} className='text-white bg-blue-gray-900'>
         {isDrawerOpen ? (
           <XMarkIcon className="h-8 w-8 stroke-2 " />
@@ -134,21 +142,19 @@ function SideBar() {
           <Bars3Icon className="h-8 w-8 stroke-2" />
         )}
       </IconButton>
-      <Drawer open={isDrawerOpen} onClose={closeDrawer} >
+      <Drawer open={isDrawerOpen} onClose={closeDrawer} className=' bg-black' >
         <Card
           color="transparent"
           shadow={false}
           className="h-[calc(100vh-2rem)] w-full p-4"
         >
-
-
-          <List>
+          <List className=' text-gray-300'>
             <NavLink>
               <Link to='/home/'>
                 <ListItem>
                   <ListItemPrefix>
-                    <InboxIcon className="h-5 w-5" />
-                  </ListItemPrefix>
+                    <RiHome8Fill className="h-5 w-5 text-blue-800" />
+                  </ListItemPrefix >
                   Home
                   <ListItemSuffix>
                   </ListItemSuffix>
@@ -157,44 +163,43 @@ function SideBar() {
               <Link to='/home/profile'>
                 <ListItem>
                   <ListItemPrefix>
-                    <UserCircleIcon className="h-5 w-5" />
+                    <CgProfile className="h-5 w-5 text-blue-800" />
                   </ListItemPrefix>
                   Profile
                 </ListItem>
               </Link>
-              <ListItem>
-                <ListItemPrefix>
-                  <InboxIcon className="h-5 w-5" />
-                </ListItemPrefix>
-                Dashboard
-                <ListItemSuffix>
-                </ListItemSuffix>
-              </ListItem>
+              <Link>
+                <ListItem>
+                  <ListItemPrefix>
+                    <RiDashboardFill className="h-5 w-5 text-blue-800" />
+                  </ListItemPrefix>
+                  Dashboard
+                  <ListItemSuffix>
+                  </ListItemSuffix>
+                </ListItem>
+              </Link>
 
-              <ListItem>
-                <ListItemPrefix>
-                  <InboxIcon className="h-5 w-5" />
-                </ListItemPrefix>
-                Liked Videos
-                <ListItemSuffix>
-                </ListItemSuffix>
-              </ListItem>
-              <ListItem>
-                <ListItemPrefix>
-                  <InboxIcon className="h-5 w-5" />
-                </ListItemPrefix>
-                History
-                <ListItemSuffix>
-                </ListItemSuffix>
-              </ListItem>
-              <ListItem>
-                <ListItemPrefix>
-                  <InboxIcon className="h-5 w-5" />
-                </ListItemPrefix>
-                Inbox
-                <ListItemSuffix>
-                </ListItemSuffix>
-              </ListItem>
+              <Link to='/home/likedVideos'>
+                <ListItem>
+                  <ListItemPrefix>
+                    <FcLike className="h-5 w-5" />
+                  </ListItemPrefix>
+                  Liked Videos
+                  <ListItemSuffix>
+                  </ListItemSuffix>
+                </ListItem>
+              </Link>
+
+              <Link to='/home/history/'>
+                <ListItem>
+                  <ListItemPrefix>
+                    <GoHistory className="h-5 w-5 text-green-300" />
+                  </ListItemPrefix>
+                  History
+                  <ListItemSuffix>
+                  </ListItemSuffix>
+                </ListItem>
+              </Link>
 
               <ListItem>
                 <ListItemPrefix>
@@ -204,7 +209,7 @@ function SideBar() {
               </ListItem>
               <ListItem>
                 <ListItemPrefix>
-                  <PowerIcon className="h-5 w-5" />
+                  <PowerIcon className="h-5 w-5 text-red-500" />
                 </ListItemPrefix>
                 Log Out
               </ListItem>

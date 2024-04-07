@@ -36,7 +36,7 @@ function CommentScreen({ videoId }) {
                 <button className='bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white  w-24 h-10 border border-red-500 hover:border-transparent rounded-lg ml-2' onClick={async () => {
                     try {
 
-                        const res = await axios.post(`/api/v1/comments/v/${videoId}`, {
+                        await axios.post(`/api/v1/comments/v/${videoId}`, {
                             content: content
                         })
                         setContent('')
@@ -48,9 +48,9 @@ function CommentScreen({ videoId }) {
                 }}> Add </button>
             </div>
             <div>
-               {
-                comments.map((comment) => (<Comment comment = {comment}/>))
-               }
+                {
+                    comments.map((comment) => (<Comment comment={comment} />))
+                }
             </div>
         </>
     )
