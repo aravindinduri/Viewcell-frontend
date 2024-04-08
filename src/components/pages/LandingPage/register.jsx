@@ -3,8 +3,6 @@ import axios from 'axios';
 import {
   Card,
   Input,
-  Checkbox,
-
   Typography,
   Alert,
   Button
@@ -12,7 +10,7 @@ import {
 
 
 const RegisterForm = () => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   const initialDetails = {
     email: "",
