@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import {
@@ -8,13 +8,27 @@ import {
   MdThumbUp,
   MdThumbDown,
 } from "react-icons/md";
-import UserProfile from "../profiles/userprofile/UserProfile.jsx";
 
 
 const VideoDetails = ({ videoDetail }) => {
+  console.log(videoDetail)
   const [subscribed, setSubscribed] = useState(false)
   const [isLiked, setIsLiked] = useState(false)
   const [isDisliked, setIsDisliked] = useState(false)
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+
+        const subscriber = await axios.get(`/api/v1/subcription/channel-subscribers/${owner._id}`);
+        setSubscribers(subscriber.data);
+        console.log(subscriber)
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData()
+
+  }, []);
 
   return (
     <div>
@@ -22,73 +36,70 @@ const VideoDetails = ({ videoDetail }) => {
       <p className="text-gray-600 "> {videoDetail.Description}</p>
       <div className="flex flex-col md:flex-row gap-1 justify-start md:items-center md:justify-between py-2">
         <Link
-          // to='/home/userprofile'
-        className='cursor-pointer'
-        onClick={() => {
-          <UserProfile user = {videoDetail}/>
-        }}
+          to='/home/userprofile'
+          state={videoDetail}
         >
-        <div className="flex gap-5">
-          <img src={videoDetail.owner.avatar} className="w-10 rounded-full" alt="avatar" />
-          <p className="font-bold text-gray-500">@{videoDetail.owner.username}</p>
-        </div>
-      </Link>
+          <div className="flex gap-5">
+            <img src={videoDetail.owner.avatar} className="w-10 rounded-full" alt="avatar" />
+            <p className="font-bold text-gray-500">@{videoDetail.owner.username}</p>
+          </div>
+        </Link>
 
-      <div className="flex items-center justify-between gap-1 py-2">
-        <div className="flex items-center mr-4">
+        <div className="flex items-center justify-between gap-1 py-2">
+          <div className="flex items-center mr-4">
+            <button
+              onClick={async () => {
+                setIsLiked(!isLiked);
+                setIsDisliked(false);
+
+                try {
+                  const res = await axios.post(`/api/v1/likes/toggle/v/${videoDetail._id}`)
+                }
+                catch (e) {
+                  console.log(e)
+                }
+              }}
+              className="bg-transparent  hover:bg-red-600 border-red-700 text-white rounded-l-full py-2 px-5 "
+            >
+              {isLiked ? (
+                <MdThumbUp size="1.5rem" />
+              ) : (
+                <MdThumbUpOffAlt size="1.5rem" />
+              )}
+            </button>
+
+            <button
+              onClick={() => {
+                setIsDisliked(!isDisliked);
+                setIsLiked(false);
+              }}
+              className="  bg-transparent hover:bg-red-600 text-white rounded-r-full py-2 px-5"
+            >
+              {isDisliked ? (
+                <MdThumbDown size="1.5rem" />
+              ) : (
+                <MdThumbDownOffAlt size="1.5rem" />
+              )}
+            </button>
+          </div>
+
           <button
             onClick={async () => {
-              setIsLiked(!isLiked);
-              setIsDisliked(false);
-
+              setSubscribed(!subscribed)
               try {
-                const res = await axios.post(`/api/v1/likes//toggle/v/${videoDetail._id}`)
+                await axios.post(`/api/v1/subcription/c/${videoDetail.owner._id}`)
               }
               catch (e) {
                 console.log(e)
               }
-            }}
-            className="bg-transparent  hover:bg-red-600 border-red-700 text-white rounded-l-full py-2 px-5 "
+            }
+            }
+            className="bg-slate-700 text-white rounded-full py-2 font-serif px-5 cursor-pointer bg-transparent border-red-800 border-2 hover:bg-red-600"
           >
-            {isLiked ? (
-              <MdThumbUp size="1.5rem" />
-            ) : (
-              <MdThumbUpOffAlt size="1.5rem" />
-            )}
-          </button>
-
-          <button
-            onClick={() => {
-              setIsDisliked(!isDisliked);
-              setIsLiked(false);
-            }}
-            className="  bg-transparent hover:bg-red-600 text-white rounded-r-full py-2 px-5"
-          >
-            {isDisliked ? (
-              <MdThumbDown size="1.5rem" />
-            ) : (
-              <MdThumbDownOffAlt size="1.5rem" />
-            )}
+            {subscribed ? "UnSubscribe" : "Subscribe"}
           </button>
         </div>
-
-        <button
-          onClick={async () => {setSubscribed(!subscribed)
-            try{
-                await axios.post(`/api/v1/subcription/c/${videoDetail.owner._id}`)
-            }
-            catch(e)
-            {
-              console.log(e)
-            }
-          }
-          }
-          className="bg-slate-700 text-white rounded-full py-2 font-serif px-5 cursor-pointer bg-transparent border-red-800 border-2 hover:bg-red-600"
-        >
-          {subscribed ? "UnSubscribe" : "Subscribe"}
-        </button>
       </div>
-    </div>
     </div >
   );
 };

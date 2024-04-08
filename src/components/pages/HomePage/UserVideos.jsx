@@ -17,13 +17,14 @@ export default function UserVideos() {
     const formData = new FormData();
     Object.entries(videoDetails).forEach(([key, value]) => {
       formData.append(key, value);
-    });
+    })
     try {
       const res = await axios.post('/api/v1/videos/', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
-      });
+      })
+      setVideoDetails(initialVideoDetails)
       console.log(res);
       fetchVideos();
     } catch (e) {

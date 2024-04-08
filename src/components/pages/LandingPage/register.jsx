@@ -1,7 +1,19 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import {
+  Card,
+  Input,
+  Checkbox,
+
+  Typography,
+  Alert,
+  Button
+} from "@material-tailwind/react";
+
 
 const RegisterForm = () => {
+  const [open, setOpen] = useState(true);
+
   const initialDetails = {
     email: "",
     fullname: "",
@@ -18,16 +30,12 @@ const RegisterForm = () => {
         console.error("Email and password are required.");
         return;
       }
-      console.log(userDetails)
       const formData = new FormData()
       Object.entries(userDetails).forEach(([key, value]) => {
         formData.append(key, value);
       });
-      console.log(formData)
       if (avatar) formData.append('avatar', avatar);
       if (coverImage) formData.append('coverImage', coverImage);
-
-
 
       const response = await axios.post("/api/v1/users/register", formData, {
         headers: {
@@ -36,7 +44,8 @@ const RegisterForm = () => {
       });
 
       if (response.status === 200) {
-        console.log("User registered successfully!");
+        console.log(response)
+        setOpen(true)
         setUserDetails(initialDetails);
       } else {
         console.error("Registration failed. Please try again later.");
@@ -47,37 +56,111 @@ const RegisterForm = () => {
   }
 
   return (
-    <div className='transition-all  backdrop-blur-sm'>
-      <div className='flex flex-col text-white gap-6 justify-center items-center border-2 w-auto h-auto rounded-lg p-4 '>
-        <h2 className='text-3xl font-Poppins '>Sign Up</h2>
-        {/*email */}
-        <input type="text" required id='email' placeholder="  Enter your Email" className=' h-10 text-black rounded-lg' value={userDetails.email} onChange={(e) => setUserDetails({ ...userDetails, email: e.target.value })} />
-        {/* full name */}
-        <input type="text" required id='fullname' placeholder=' Enter Your Fullname' className=' h-10 text-black rounded-lg' value={userDetails.fullname} onChange={(e) => setUserDetails({ ...userDetails, fullname: e.target.value })} />
-        {/* Username */}
-        <input type="text" required id='username' placeholder=' Enter Your Username' className=' h-10 text-black rounded-lg' value={userDetails.username} onChange={(e) => setUserDetails({ ...userDetails, username: e.target.value })} />
-        {/* Avatar */}
-        <div className='flex gap-4'>
-          <label className='text-lg font-mono pl-4'>Profile</label>
-          {/* <input type="file" id='avatar' required className='text-white rounded-lg' onChange={(e) => setUserDetails({ ...userDetails, avatar: e.target.files[0] })} /> */}
-          <input type="file" id='avatar' required className='text-white rounded-lg' onChange={(e) => { setAvatar(e.target.files[0]) }} />
 
-        </div>
-        {/* Thumbnail */}
-        <div className="flex gap-4">
-          <label htmlFor="coverImage" className='text-lg font-mono pl-4 '>Cover Image</label>
-          {/* <input type="file" id='coverImage' className=' h-10 text-white rounded-lg' onChange={(e) => setUserDetails({ ...userDetails, coverImage: e.target.files[0] })} /> */}
-          <input type="file" id='coverImage' className=' h-10 text-white rounded-lg' onChange={(e) => setCoverImage(e.target.files[0])} />
+    <>
+      <>
 
-        </div>
-        {/*Password  */}
-        <input type="password" id='password' required placeholder="  Enter Your Password" className='h-10 text-black rounded-lg' value={userDetails.password} onChange={(e) => setUserDetails({ ...userDetails, password: e.target.value })} />
-        <button onClick={handleRegistration} className='bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-2 px-4 border border-red-500 hover:border-transparent rounded-lg'>Sign up</button>
-      </div>
-    </div>
+        <Alert
+          open={open}
+          onClose={() => setOpen(false)}
+          animate={{
+            mount: { y: 0 },
+            unmount: { y: 100 },
+          }}
+        >
+          User Registered Succesfully
+        </Alert>
+      </>
+
+      <Card color="" shadow={false} className=' p-4 border-2 bg-black'>
+        <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
+          <div className="mb-1 flex flex-col gap-6">
+
+            {/* FULLNAME */}
+            <Typography variant="h6" color="blue-gray" className="-mb-3 text-gray-300">
+              Fullname
+            </Typography>
+            <Input
+              color='blue'
+              label='Fullname'
+              size="lg"
+              className=' text-white'
+              value={userDetails.fullname} onChange={(e) => setUserDetails({ ...userDetails, fullname: e.target.value })}
+            />
+
+            {/* USERNAME */}
+            <Typography variant="h6" color="blue-gray" className="-mb-3 text-gray-300">
+              Username
+            </Typography>
+            <Input
+              color='blue'
+              label='Username'
+              size="lg"
+              className='text-white'
+              value={userDetails.username} onChange={(e) => setUserDetails({ ...userDetails, username: e.target.value })}
+            />
+
+            {/* EMAIL */}
+            <Typography variant="h6" color="blue-gray" className="-mb-3 text-gray-300">
+              Your Email
+            </Typography>
+            <Input
+              size="lg"
+              color='blue'
+              className='text-white'
+              label='Email'
+              value={userDetails.email} onChange={(e) => setUserDetails({ ...userDetails, email: e.target.value })}
+            />
+
+
+            <Typography variant="h6" color="blue-gray" className="-mb-3 text-gray-300">
+              Avatar
+            </Typography>
+            <Input
+              type='file'
+              size="lg"
+              color='blue'
+              className='text-white'
+              label='avatar'
+              onChange={(e) => { setAvatar(e.target.files[0]) }}
+            />
+
+            <Typography variant="h6" color="blue-gray" className="-mb-3 text-gray-300">
+              Cover-Image
+            </Typography>
+            <Input
+              type='file'
+              size="lg"
+              color='blue'
+              className='text-white'
+              label='coveriamge'
+              onChange={(e) => { setCoverImage(e.target.files[0]) }}
+            />
+
+
+            <Typography variant="h6" color="blue-gray" className="-mb-3 text-gray-300">
+              Password
+            </Typography>
+            <Input
+              size="lg"
+              color='blue'
+              className='text-white'
+              label='Password'
+              value={userDetails.password} onChange={(e) => setUserDetails({ ...userDetails, password: e.target.value })}
+            />
+
+          </div>
+
+          <Button className="mt-6 bg-red-600" fullWidth onClick={handleRegistration} >
+            sign up
+          </Button>
+        </form>
+      </Card>
+
+    </>
+
   );
 };
 
 export default RegisterForm;
-
 
