@@ -2,8 +2,11 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import VideoCard from './Video/VideoCard.jsx';
+import { Audio } from 'react-loader-spinner'
+import { useOutletContext } from 'react-router-dom';
 
 export default function UserVideos() {
+  const data = useOutletContext()
   const initialVideoDetails = {
     title: '',
     description: '',
@@ -12,8 +15,11 @@ export default function UserVideos() {
   };
   const [videoDetails, setVideoDetails] = useState(initialVideoDetails);
   const [videos, setVideos] = useState([]);
+  const [loading, setLoading] = useState(false);
 
+  
   const videoUpload = async () => {
+    setLoading(true);
     const formData = new FormData();
     Object.entries(videoDetails).forEach(([key, value]) => {
       formData.append(key, value);
@@ -25,19 +31,22 @@ export default function UserVideos() {
         }
       })
       setVideoDetails(initialVideoDetails)
-      console.log(res);
       fetchVideos();
     } catch (e) {
       console.log(e);
+    } finally {
+      setLoading(false);
     }
   };
 
   const fetchVideos = async () => {
     try {
-      const response = await axios.get('/api/v1/videos/');
+      const response = await axios.get('/api/v1/videos/',{
+        params : {
+          userId : data.userId
+        }
+      });
       setVideos(response.data.data);
-      console.log('wefv',videos)
-      console.log(response.data.data);
     } catch (error) {
       console.log(error);
     }
@@ -91,6 +100,15 @@ export default function UserVideos() {
           >
             Submit
           </button>
+          {loading && (
+            <Audio
+              height="100"
+              width="100"
+              color='grey'
+              ariaLabel='loading'
+            />
+
+          )}
         </div>
       </div>
       <div>
@@ -98,7 +116,7 @@ export default function UserVideos() {
         <div className=" flex flex-wrap ">
 
           {videos.map((video) => (
-            <Link  to= {`/home/watchscreen/${video._id}`}>
+            <Link to={`/home/watchscreen/${video._id}`}>
               <VideoCard video={video} />
             </Link>
           ))}

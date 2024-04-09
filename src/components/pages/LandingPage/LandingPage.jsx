@@ -1,18 +1,12 @@
 import React, { useState } from "react";
-import clsx from 'clsx'
 import Logo from '../../../images/logo.jsx';
-import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { Switch } from "@material-tailwind/react";
-import { SiGmail } from "react-icons/si";
-import { AiOutlineMenu } from "react-icons/ai";
-import { MdClose } from "react-icons/md";
 import { Parallax } from 'react-parallax';
 import LoginForm from "./login.jsx";
 import RegisterForm from "./register.jsx";
 import Footer from "./Footer.jsx";
 const LandingPage = () => {
   const [Toggle, setToggle] = useState(false)
-  const [isSideBarOpen, setOpen] = useState(false)
   const [isLogin, setLogin] = useState(false)
   function handleToggle(toggle) {
     toggle = !toggle
@@ -29,13 +23,8 @@ const LandingPage = () => {
                 <li className="cursor-pointer text-3xl pl-4"><Logo /></li>
               </ul>
             </section>
-            {/* side bar */}
-
-
           </nav>
-
         </div>
-        {/* Body */}
         <div className="flex flex-col overflow-hidden">
           <Parallax bgImage="https://i.postimg.cc/P5YgPs11/neon-22534-960-720.jpg" strength={900} className="flex justify-center items-center w-auto h-lvh bg-cover" >
             <b className="text-6xl underline decoration-pink-500 text-white font-sans z-10 relative italic hover:not-italic transition-all font-normal hover:font-bold">Welcome !</b>
@@ -79,7 +68,6 @@ const LandingPage = () => {
             </div>
           </Parallax>
         </div>
-
       </div>
       <Footer />
     </>

@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import Video from '../Video/Video';
 import CommentScreen from '../Screens/CommentScreen';
 import VideoScreen from '../Screens/VideoScreen';
+import { Audio } from  'react-loader-spinner'
 
 function WatchScreen() {
     const { videoId } = useParams();
@@ -29,7 +30,13 @@ function WatchScreen() {
     }, [videoId]);
 
     if (loading) {
-        return <div>Loading...</div>;
+      return <Audio
+          height="100"
+          width="100"
+          color='grey'
+          ariaLabel='loading'
+        />;
+
     }
 
     if (error) {

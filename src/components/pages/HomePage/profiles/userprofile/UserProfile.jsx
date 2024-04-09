@@ -11,7 +11,6 @@ import {
 } from "@material-tailwind/react";
 
 function UserProfile() {
-  const [ownerdata, setownerdata] = useState({})
   const [subscribers, setSubscribers] = useState(null)
   const location = useLocation()
   if (!location) {
@@ -36,8 +35,6 @@ function UserProfile() {
 
   }, []);
 
-  console.log(location)
-
   const subscriberCount = subscribers ? subscribers.data.length : 0;
 
 
@@ -61,6 +58,7 @@ function UserProfile() {
             </div>
           </CardBody>
         </Card>
+        
 
       </div>
 
