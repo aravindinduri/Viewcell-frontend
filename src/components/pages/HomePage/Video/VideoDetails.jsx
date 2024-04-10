@@ -21,7 +21,6 @@ const VideoDetails = ({ videoDetail }) => {
 
         const subscriber = await axios.get(`/api/v1/subcription/channel-subscribers/${owner._id}`);
         setSubscribers(subscriber.data);
-        console.log(subscriber)
       } catch (error) {
         console.log(error);
       }

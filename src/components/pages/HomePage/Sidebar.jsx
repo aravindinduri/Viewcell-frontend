@@ -17,7 +17,6 @@ import {
 import {
 
   Cog6ToothIcon,
-  InboxIcon,
   PowerIcon,
 } from "@heroicons/react/24/solid";
 import {

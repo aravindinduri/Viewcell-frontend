@@ -28,7 +28,6 @@ const LoginForm = () => {
       })
       if (response.status === 200) {
         console.log("user logged in Succesfully")
-        setDetails(initialDetails)
         setisLogin(true)
         navigate('/home')
       }

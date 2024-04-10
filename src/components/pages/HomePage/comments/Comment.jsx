@@ -10,10 +10,6 @@ import {
 } from "@material-tailwind/react";
 
 function Comment({ comment }) {
-  let s = 0;
-  useEffect(()=>{
-    console.log('swdecf')
-  },[s])
   return (
     <>
 

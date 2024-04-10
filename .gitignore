@@ -1,3 +1,4 @@
 # vite.config.js
 node_modules
 .env
+.vercel

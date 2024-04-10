@@ -42,7 +42,6 @@ const RegisterForm = () => {
       });
 
       if (response.status === 200) {
-        console.log(response)
         setOpen(true)
         setUserDetails(initialDetails);
       } else {

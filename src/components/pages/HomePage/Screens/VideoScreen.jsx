@@ -13,7 +13,6 @@ function VideoScreen({ queryString }) {
         }
       });
       setVideos(response.data.data);
-      console.log(response)
     } catch (error) {
       console.log(error);
     }

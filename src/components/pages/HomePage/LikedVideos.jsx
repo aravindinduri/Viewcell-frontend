@@ -27,7 +27,6 @@ function LikedVideos() {
       <div  className=' ml-7 lg:ml-60'>
         <h3 className=" text-3xl sm:text-2xl font-serif">Liked Videos</h3>
         <div className=" flex flex-wrap ">
-          {console.log(videos)}
           {videos.map((video) => (
             <Link to={`/home/watchscreen/${video._id}`}>
               <VideoCard video={video} />
