@@ -11,7 +11,6 @@ import {
 
 
 const VideoDetails = ({ videoDetail }) => {
-  console.log(videoDetail)
   const [subscribed, setSubscribed] = useState(false)
   const [isLiked, setIsLiked] = useState(false)
   const [isDisliked, setIsDisliked] = useState(false)
