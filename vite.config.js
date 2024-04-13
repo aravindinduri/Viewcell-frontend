@@ -1,25 +1,12 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vitejs.dev/config/
-// export default defineConfig({
-  // server : {
-  //  proxy : {
-  //   '/api': 'http://localhost:4137'
-  //  }
-//   },
-//   plugins: [react()],
-// })
 
-// import { defineConfig } from 'vite'
-// import react from '@vitejs/plugin-react'
-
-// https://vitejs.dev/config/
 export default defineConfig({
   
   server : {
     proxy : {
-     '/api':'https://viewcell-backend.onrender.com/'
+     '/api':'https://viewcell-backend.onrender.com/',
     }
   },
   plugins: [react()],
