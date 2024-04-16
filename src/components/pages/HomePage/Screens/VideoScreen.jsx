@@ -27,7 +27,7 @@ function VideoScreen({ queryString }) {
         <div className="flex flex-wrap ">
 
           {videos.map((video) => (
-            <Link to={`/home/watchscreen/${video._id}`}>
+            <Link key={video._id} to={`/home/watchscreen/${video._id}`}>
               <VideoCard video={video} />
             </Link>
           ))}

@@ -60,8 +60,6 @@ function SideBar() {
                     <RiHome8Fill className="h-5 w-5 text-blue-800" />
                   </ListItemPrefix >
                   Home
-                  <ListItemSuffix>
-                  </ListItemSuffix>
                 </ListItem>
               </Link>
               <Link to='/home/profile'>
@@ -78,8 +76,6 @@ function SideBar() {
                     <RiDashboardFill className="h-5 w-5 text-blue-800" />
                   </ListItemPrefix>
                   Dashboard
-                  <ListItemSuffix>
-                  </ListItemSuffix>
                 </ListItem>
               </Link>
 
@@ -89,8 +85,6 @@ function SideBar() {
                     <FcLike className="h-5 w-5" />
                   </ListItemPrefix>
                   Liked Videos
-                  <ListItemSuffix>
-                  </ListItemSuffix>
                 </ListItem>
               </Link>
 
@@ -100,8 +94,6 @@ function SideBar() {
                     <GoHistory className="h-5 w-5 text-green-300" />
                   </ListItemPrefix>
                   History
-                  <ListItemSuffix>
-                  </ListItemSuffix>
                 </ListItem>
               </Link>
 
