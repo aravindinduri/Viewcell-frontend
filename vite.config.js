@@ -6,7 +6,7 @@ export default defineConfig({
   
   server : {
     proxy : {
-     '/api':'https://viewcell-backend.onrender.com/',
+     '/api':'http://localhost:4137/',
     }
   },
   plugins: [react()],

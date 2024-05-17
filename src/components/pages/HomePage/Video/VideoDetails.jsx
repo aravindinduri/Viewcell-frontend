@@ -17,13 +17,17 @@ const VideoDetails = ({ videoDetail }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-
-        const subscriber = await axios.get(`/api/v1/subcription/channel-subscribers/${owner._id}`);
-        setSubscribers(subscriber.data);
-      } catch (error) {
+        const likestatus = await axios.get(`/api/v1/likes/${videoDetail._id}`)
+        const subscriber = await axios.get(`/api/v1/subcription/channel-subscribers/${videoDetail.owner._id}`);
+        setSubscribed(subscriber.data);
+        setIsLiked(likestatus.data.data)
+      } 
+      catch (error) {
         console.log(error);
       }
-    };
+    }
+    console.log('wdcfv');
+
     fetchData()
 
   }, []);
