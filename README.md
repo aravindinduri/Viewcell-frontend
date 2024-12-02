@@ -21,7 +21,7 @@ ViewCell is a video-sharing platform, enhanced with a unique "Tweets" feature. U
 - **State Management**: Redux (optional for managing global states)
 - **Styling**: Tailwind CSS / Material-UI
 - **Authentication**: JWT (JSON Web Tokens) for user authentication and authorization
-- **File Uploads**: Multer or Firebase Storage for video and profile picture uploads
+- **File Uploads**: Cloudinary Storage for video and profile picture uploads
 
 ---
 
